@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f0f0f;
+  --foreground: #e7e5e4;
+  --accent: #b45309; /* terracotta-gold */
+  --muted: #1c1917;  /* deep earth */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading-serif {
+  font-family: var(--font-serif);
+}
+
+/* Ensure Leaflet map controls don't interfere with our header */
+.leaflet-control-container {
+  position: relative;
+  z-index: 999;
+}
+
+.leaflet-pane {
+  z-index: auto;
+}
+
+.leaflet-map-pane {
+  z-index: 1;
+}
+
+/* Custom marker styles */
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+  transition: transform 0.2s ease;
+}
+
+.custom-marker:hover {
+  transform: scale(1.1);
+}
+
+/* Enhanced popup styles */
+.leaflet-popup-content-wrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+.leaflet-popup-tip {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-popup {
+  font-family: var(--font-sans);
+}
+
+.custom-popup img {
+  transition: transform 0.3s ease;
+}
+
+.custom-popup:hover img {
+  transform: scale(1.02);
+}
+
+/* Popup close button styling */
+.leaflet-popup-close-button {
+  color: #666 !important;
+  font-size: 18px !important;
+  padding: 8px !important;
+  width: auto !important;
+  height: auto !important;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.leaflet-popup-close-button:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  color: #333 !important;
 }
