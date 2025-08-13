@@ -5,9 +5,7 @@
   "framework": "nextjs",
   "regions": ["iad1"],
   "functions": {
-    "app/api/resolve-image/route.ts": {
-      "maxDuration": 30
-    }
+    
   },
   "headers": [
     {

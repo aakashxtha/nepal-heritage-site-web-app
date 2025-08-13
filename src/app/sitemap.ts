@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITES } from "@/data/sites";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://example.com";
+  const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const staticEntries: MetadataRoute.Sitemap = [
     { url: `${base}/`, changeFrequency: "monthly", priority: 1 },
     { url: `${base}/map`, changeFrequency: "monthly", priority: 0.8 },

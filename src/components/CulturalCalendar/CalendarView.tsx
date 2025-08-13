@@ -217,6 +217,7 @@ export function CalendarView({ siteFilter }: CalendarViewProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setSelectedEvent(null)}
+          role="presentation"
         >
           <motion.div
             className="bg-background rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
@@ -224,6 +225,9 @@ export function CalendarView({ siteFilter }: CalendarViewProps) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedEvent.name} details`}
           >
             <div className="p-6">
               <div className="flex items-start justify-between mb-4">
@@ -237,6 +241,7 @@ export function CalendarView({ siteFilter }: CalendarViewProps) {
                 <button
                   onClick={() => setSelectedEvent(null)}
                   className="p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+                  aria-label="Close dialog"
                 >
                   ✕
                 </button>

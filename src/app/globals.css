@@ -101,3 +101,12 @@ body {
   background: rgba(255, 255, 255, 1) !important;
   color: #333 !important;
 }
+
+/* Light theme overrides */
+[data-theme="light"] {
+  --background: #fafaf9;
+  --foreground: #0f0f0f;
+  --accent: #b45309;
+  --muted: #ecebe7;
+}
+
