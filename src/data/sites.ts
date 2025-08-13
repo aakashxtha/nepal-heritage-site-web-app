@@ -38,6 +38,33 @@ export const SITES: HeritageSite[] = [
       { year: "1979", title: "UNESCO Inscription", description: "Kathmandu Valley added to World Heritage List" },
       { year: "2015", title: "Earthquakes", description: "Significant damage and global restoration efforts" },
     ],
+    unesco: {
+      inscriptionYear: 1979,
+      extensionYears: [2006],
+      criteria: ["(iii)", "(iv)", "(vi)"],
+      officialPage: "https://whc.unesco.org/en/list/121/",
+    },
+    officialLinks: [
+      { title: "UNESCO: Kathmandu Valley", url: "https://whc.unesco.org/en/list/121/" },
+    ],
+    sources: [
+      { title: "Kathmandu Valley preservation overview", url: "https://whc.unesco.org/en/list/121/" },
+    ],
+    itineraries: [
+      {
+        title: "Classic 2-day valley highlights",
+        days: 2,
+        highlights: [
+          "Day 1: Kathmandu Durbar Square, Swayambhunath",
+          "Day 2: Patan Durbar Square, Boudhanath, Pashupatinath"
+        ],
+        notes: "Buy combined heritage tickets where available; start early to avoid crowds",
+      },
+    ],
+    faqs: [
+      { question: "Are the sites walkable?", answer: "Each monument zone is walkable, but travel between zones needs transport (taxi/ride-share)." },
+      { question: "Dress code?", answer: "Modest attire is appreciated at religious sites; remove shoes at temples and courtyards." }
+    ],
     gallery: [
       { src: "https://unsplash.com/photos/-DNpsIGSVKQ/download?force=true&w=1600", alt: "Kathmandu Durbar Square at night", caption: "Durbar Square" },
       { src: "https://unsplash.com/photos/Dk8jPwMPtAk/download?force=true&w=1600", alt: "Swayambhunath Stupa", caption: "Swayambhunath" },
@@ -102,6 +129,33 @@ export const SITES: HeritageSite[] = [
       { year: "1976", title: "Park Established", description: "Sagarmatha National Park created" },
       { year: "1979", title: "UNESCO Inscription", description: "World Heritage listing" },
     ],
+    unesco: {
+      inscriptionYear: 1979,
+      criteria: ["(vii)", "(x)"],
+      officialPage: "https://whc.unesco.org/en/list/120/",
+    },
+    officialLinks: [
+      { title: "UNESCO: Sagarmatha National Park", url: "https://whc.unesco.org/en/list/120/" },
+    ],
+    sources: [
+      { title: "Sagarmatha biodiversity summary", url: "https://whc.unesco.org/en/list/120/" },
+    ],
+    itineraries: [
+      {
+        title: "Everest region intro (5–7 days)",
+        days: 7,
+        highlights: [
+          "Lukla–Phakding–Namche acclimatization",
+          "Day hikes to Khumjung/Kunde or Everest View Hotel",
+          "Visit Tengboche Monastery"
+        ],
+        notes: "Allow extra acclimatization days; check permits (SNP + local).",
+      },
+    ],
+    faqs: [
+      { question: "Best season?", answer: "Spring (Mar–May) and autumn (Sep–Nov) for weather and views; winter is cold but clear." },
+      { question: "Permits?", answer: "Sagarmatha National Park entry and Khumbu Pasang Lhamu local permits are required." }
+    ],
     gallery: [
       { src: "https://unsplash.com/photos/infssQ2tjeM/download?force=true&w=1600", alt: "Mount Everest at sunset" },
       { src: "https://unsplash.com/photos/wRvqoP2QWVg/download?force=true&w=1600", alt: "Tengboche Monastery", caption: "Tengboche Monastery" },
@@ -137,6 +191,33 @@ export const SITES: HeritageSite[] = [
     timeline: [
       { year: "1973", title: "Park Established", description: "Nepal's first national park" },
       { year: "1984", title: "UNESCO Inscription", description: "World Heritage listing" },
+    ],
+    unesco: {
+      inscriptionYear: 1984,
+      criteria: ["(vii)", "(ix)", "(x)"],
+      officialPage: "https://whc.unesco.org/en/list/284/",
+    },
+    officialLinks: [
+      { title: "UNESCO: Chitwan National Park", url: "https://whc.unesco.org/en/list/284/" },
+    ],
+    sources: [
+      { title: "Chitwan conservation context", url: "https://whc.unesco.org/en/list/284/" },
+    ],
+    itineraries: [
+      {
+        title: "Wildlife weekend (2–3 days)",
+        days: 3,
+        highlights: [
+          "Jeep safari and river canoe",
+          "Birdwatching morning walk",
+          "Tharu cultural program"
+        ],
+        notes: "Listen to guides and follow park rules for safety and wildlife welfare.",
+      },
+    ],
+    faqs: [
+      { question: "Wildlife safety?", answer: "Always keep distance, avoid sudden movements, and follow your guide’s instructions." },
+      { question: "Malaria risk?", answer: "Risk is low but bring insect repellent; consult a travel clinic if concerned." }
     ],
     gallery: [
       { src: "https://unsplash.com/photos/jApVcSuBo6E/download?force=true&w=1600", alt: "One-horned rhinoceros" },
@@ -177,6 +258,32 @@ export const SITES: HeritageSite[] = [
     gallery: [
       { src: "https://unsplash.com/photos/EY7jJ40zWug/download?force=true&w=1600", alt: "Mayadevi Temple" },
       { src: "https://unsplash.com/photos/7uSwdSWjSVU/download?force=true&w=1600", alt: "Ashoka Pillar" },
+    ],
+    unesco: {
+      inscriptionYear: 1997,
+      criteria: ["(iii)", "(vi)"],
+      officialPage: "https://whc.unesco.org/en/list/666/",
+    },
+    officialLinks: [
+      { title: "UNESCO: Lumbini, the Birthplace of the Lord Buddha", url: "https://whc.unesco.org/en/list/666/" },
+    ],
+    sources: [
+      { title: "Lumbini Development Trust", url: "https://www.lumbinidevtrust.gov.np/" },
+    ],
+    itineraries: [
+      {
+        title: "Sacred Lumbini day trip",
+        days: 1,
+        highlights: [
+          "Mayadevi Temple & Sacred Garden",
+          "Ashoka Pillar inscription",
+          "Cycling through East/West Monastic Zones"
+        ],
+      },
+    ],
+    faqs: [
+      { question: "Photography rules?", answer: "No flash and sometimes no photography inside temples; follow posted guidance." },
+      { question: "Guides?", answer: "Local guides are available at the entrance and can enrich the historical context." }
     ],
   },
 ];

@@ -50,6 +50,18 @@ export type HeritageSite = {
   gallery: GalleryImage[];
   relatedSiteSlugs?: string[];
   monumentZones?: MonumentZone[]; // For Kathmandu Valley
+  unesco?: {
+    inscriptionYear: number;
+    extensionYears?: number[];
+    criteria?: string[]; // e.g., ["(iii)", "(iv)"]
+    areaKm2?: number;
+    bufferZoneKm2?: number;
+    officialPage?: string; // UNESCO page URL
+  };
+  officialLinks?: Array<{ title: string; url: string }>;
+  sources?: Array<{ title: string; url: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
+  itineraries?: Array<{ title: string; days: number; highlights: string[]; notes?: string }>;
 };
 
 
