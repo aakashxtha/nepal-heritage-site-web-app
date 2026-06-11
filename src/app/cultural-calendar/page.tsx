@@ -1,152 +1,133 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Calendar, Filter, MapPin, Star } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { MapPin, Star } from "lucide-react";
 import { CalendarView } from "@/components/CulturalCalendar/CalendarView";
 import { CULTURAL_EVENTS, getCurrentSeasonEvents } from "@/data/cultural-calendar";
-import { useReducedMotion, getMotionVariants } from "@/lib/useReducedMotion";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
-
-const reducedFadeInUp = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.2 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const reducedStaggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.05
-    }
-  }
-};
+import { Reveal } from "@/components/motion/Reveal";
+import { cn } from "@/lib/utils";
 
 const SITE_FILTERS = [
   { id: "", name: "All Sites" },
   { id: "kathmandu-valley", name: "Kathmandu Valley" },
-  { id: "sagarmatha-national-park", name: "Sagarmatha National Park" },
-  { id: "chitwan-national-park", name: "Chitwan National Park" },
-  { id: "lumbini", name: "Lumbini" }
+  { id: "sagarmatha-national-park", name: "Sagarmatha" },
+  { id: "chitwan-national-park", name: "Chitwan" },
+  { id: "lumbini", name: "Lumbini" },
 ];
 
 export default function CulturalCalendarPage() {
   const [selectedSite, setSelectedSite] = useState("");
-  const prefersReducedMotion = useReducedMotion();
-  
-  const fadeVariants = getMotionVariants(fadeInUp, reducedFadeInUp, prefersReducedMotion);
-  const containerVariants = getMotionVariants(staggerContainer, reducedStaggerContainer, prefersReducedMotion);
-  
+  const reduce = useReducedMotion();
+
   const currentSeasonEvents = getCurrentSeasonEvents();
   const totalEvents = CULTURAL_EVENTS.length;
 
   return (
-    <motion.div 
-      className="grid gap-8"
-      initial="initial"
-      animate="animate"
-      variants={containerVariants}
-    >
-      {/* Header */}
-      <motion.div className="text-center space-y-4" variants={fadeVariants}>
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <Calendar className="h-8 w-8 text-accent" />
-          <h1 className="heading-serif text-3xl font-bold">Cultural Calendar</h1>
-        </div>
-        <p className="text-foreground/80 max-w-2xl mx-auto">
-          Discover Nepal&apos;s rich cultural heritage through its vibrant festivals and seasonal celebrations. 
-          Plan your visit around these incredible cultural experiences.
+    <div className="container-page pt-28 sm:pt-32 pb-16 grid gap-12">
+      <Reveal>
+        <p className="eyebrow">Living Culture</p>
+        <h1 className="heading-serif mt-4 text-4xl sm:text-6xl font-semibold text-balance">
+          Cultural calendar
+        </h1>
+        <p className="mt-4 text-foreground/65 max-w-xl">
+          Nepal&apos;s heritage sites pulse with festivals all year round. Browse month by month and
+          plan a visit that coincides with the celebrations.
         </p>
-        <div className="flex items-center justify-center gap-6 text-sm text-foreground/60">
-          <div className="flex items-center gap-2">
+        <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-foreground/55">
+          <span className="flex items-center gap-2">
             <Star className="h-4 w-4 text-accent" />
-            <span>{totalEvents} festivals & events</span>
-          </div>
-          <div className="flex items-center gap-2">
+            {totalEvents} festivals & events
+          </span>
+          <span className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-accent" />
-            <span>4 UNESCO heritage sites</span>
-          </div>
+            4 UNESCO heritage sites
+          </span>
         </div>
-      </motion.div>
+      </Reveal>
 
-      {/* Current Season Highlight */}
+      {/* Current season highlight */}
       {currentSeasonEvents.length > 0 && (
-        <motion.div 
-          className="p-6 rounded-xl bg-accent/10 border border-accent/20"
-          variants={fadeVariants}
-        >
-          <h2 className="text-lg font-semibold text-accent mb-3">This Season&apos;s Highlights</h2>
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-            {currentSeasonEvents.slice(0, 3).map((event) => (
-              <div key={event.id} className="flex items-center gap-3 p-3 rounded-lg bg-background/50">
-                <span className="text-2xl">
-                  {event.type === 'festival' ? '🎉' : 
-                   event.type === 'religious' ? '🙏' : 
-                   event.type === 'cultural' ? '🎭' : '🌾'}
-                </span>
-                <div>
-                  <h3 className="font-medium text-sm">{event.name}</h3>
-                  <p className="text-xs text-foreground/70">{event.dates.year2025 || event.dates.dateRange}</p>
-                </div>
+        <Reveal delay={0.1}>
+          <div className="relative overflow-hidden rounded-2xl border border-accent/25 bg-accent/10 p-6 sm:p-8">
+            <div className="aurora" aria-hidden />
+            <div className="relative">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-accent">
+                This season&apos;s highlights
+              </p>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                {currentSeasonEvents.slice(0, 3).map((event) => (
+                  <div
+                    key={event.id}
+                    className="flex items-center gap-3 rounded-xl border border-border-soft bg-background/50 backdrop-blur p-4"
+                  >
+                    <span className="text-2xl" aria-hidden>
+                      {event.type === "festival"
+                        ? "🎉"
+                        : event.type === "religious"
+                          ? "🙏"
+                          : event.type === "cultural"
+                            ? "🎭"
+                            : "🌾"}
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-medium text-sm truncate">{event.name}</h3>
+                      <p className="text-xs text-foreground/55">
+                        {event.dates.year2025 || event.dates.dateRange}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </motion.div>
+        </Reveal>
       )}
 
-      {/* Site Filter */}
-      <motion.div className="space-y-4" variants={fadeVariants}>
-        <div className="flex items-center gap-3">
-          <Filter className="h-5 w-5 text-accent" />
-          <h2 className="text-lg font-semibold">Filter by Heritage Site</h2>
-        </div>
-        <div className="flex flex-wrap gap-2">
+      {/* Site filter */}
+      <Reveal delay={0.15}>
+        <div className="flex flex-wrap items-center gap-2">
           {SITE_FILTERS.map((site) => (
             <button
               key={site.id}
               onClick={() => setSelectedSite(site.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={cn(
+                "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
                 selectedSite === site.id
-                  ? "bg-accent text-background"
-                  : "bg-muted/30 hover:bg-muted/50 text-foreground/80"
-              }`}
+                  ? "text-background"
+                  : "border border-border-soft bg-surface/60 text-foreground/65 hover:text-foreground hover:border-accent/40"
+              )}
+              aria-pressed={selectedSite === site.id}
             >
-              {site.name}
+              {selectedSite === site.id && (
+                <motion.span
+                  layoutId="calendar-site-pill"
+                  className="absolute inset-0 rounded-full bg-accent"
+                  transition={
+                    reduce ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 32 }
+                  }
+                />
+              )}
+              <span className="relative">{site.name}</span>
             </button>
           ))}
         </div>
-      </motion.div>
+      </Reveal>
 
-      {/* Calendar */}
-      <motion.div variants={fadeVariants}>
+      <Reveal delay={0.1}>
         <CalendarView siteFilter={selectedSite || undefined} />
-      </motion.div>
+      </Reveal>
 
-      {/* Footer Info */}
-      <motion.div 
-        className="text-center py-8 border-t border-foreground/10"
-        variants={fadeVariants}
-      >
-        <p className="text-sm text-foreground/60 mb-2">
-          Festival dates may vary based on lunar calendar calculations
-        </p>
-        <p className="text-xs text-foreground/50">
-          Always verify specific dates with local sources when planning your visit
-        </p>
-      </motion.div>
-    </motion.div>
+      <Reveal>
+        <div className="text-center py-8 border-t border-border-soft">
+          <p className="text-sm text-foreground/55 mb-2">
+            Festival dates may vary based on lunar calendar calculations.
+          </p>
+          <p className="text-xs text-foreground/45">
+            Always verify specific dates with local sources when planning your visit.
+          </p>
+        </div>
+      </Reveal>
+    </div>
   );
 }

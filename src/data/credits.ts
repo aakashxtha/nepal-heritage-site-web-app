@@ -14,7 +14,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   // Kathmandu Valley
   {
     id: "kathmandu-hero",
-    url: "https://unsplash.com/photos/n0RIwkDfJ1g/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1623492701902-47dc207df5dc?q=80&w=1200&auto=format&fit=crop",
     photographer: "Raimond Klavins",
     photographerUrl: "https://unsplash.com/@raimondklavins",
     source: "unsplash",
@@ -25,7 +25,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "kathmandu-durbar-night",
-    url: "https://unsplash.com/photos/-DNpsIGSVKQ/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1731490912730-6ec3b0a22533?q=80&w=1200&auto=format&fit=crop",
     photographer: "Dipesh Manandhar",
     photographerUrl: "https://unsplash.com/@dipeshmdr",
     source: "unsplash",
@@ -36,7 +36,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "swayambhunath-stupa",
-    url: "https://unsplash.com/photos/Dk8jPwMPtAk/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1672338127087-d46c9ecd48f9?q=80&w=1200&auto=format&fit=crop",
     photographer: "Danylo Istominov 🇺🇦",
     photographerUrl: "https://unsplash.com/@istominov",
     source: "unsplash",
@@ -47,7 +47,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "boudhanath-stupa",
-    url: "https://unsplash.com/photos/N6MiaknsNX8/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1617469170169-55626c028519?q=80&w=1200&auto=format&fit=crop",
     photographer: "Raimond Klavins",
     photographerUrl: "https://unsplash.com/@raimondklavins",
     source: "unsplash",
@@ -58,7 +58,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "kathmandu-durbar-square",
-    url: "https://unsplash.com/photos/FTxTyNog7BY/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1706188370039-e0cf9bd6ea16?q=80&w=1200&auto=format&fit=crop",
     photographer: "Martijn Vonk",
     photographerUrl: "https://unsplash.com/@vonkm737",
     source: "unsplash",
@@ -69,7 +69,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "patan-durbar-square",
-    url: "https://unsplash.com/photos/nHiAQu38jKg/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1699204121879-f7d805d3bc41?q=80&w=1200&auto=format&fit=crop",
     photographer: "Jochen van Wylick",
     photographerUrl: "https://unsplash.com/@jochenvw",
     source: "unsplash",
@@ -80,7 +80,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "bhaktapur-durbar-square",
-    url: "https://unsplash.com/photos/ErntP2j0WKk/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1634150527341-56267a30704d?q=80&w=1200&auto=format&fit=crop",
     photographer: "Sarad Shrestha",
     photographerUrl: "https://unsplash.com/@saradhaku",
     source: "unsplash",
@@ -91,7 +91,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "swayambhunath-temple",
-    url: "https://unsplash.com/photos/fdO0Rm1SUDE/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1560747643-308411529b15?q=80&w=1200&auto=format&fit=crop",
     photographer: "Meghraj Neupane",
     photographerUrl: "https://unsplash.com/@meghraz",
     source: "unsplash",
@@ -102,7 +102,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "boudhanath-detail",
-    url: "https://unsplash.com/photos/KKm1ua7MSf0/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1611516491426-03025e6043c8?q=80&w=1200&auto=format&fit=crop",
     photographer: "Raimond Klavins",
     photographerUrl: "https://unsplash.com/@raimondklavins",
     source: "unsplash",
@@ -113,7 +113,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "pashupatinath-temple",
-    url: "https://unsplash.com/photos/R2sI4cwPXqQ/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1648298470994-7065f521375c?q=80&w=1200&auto=format&fit=crop",
     photographer: "Ajeet Manandhar",
     photographerUrl: "https://unsplash.com/@ajeets",
     source: "unsplash",
@@ -124,7 +124,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "changu-narayan",
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Changunarayan%20Temple%20of%20Nepal.jpg",
+    url: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Changunarayan_Temple_of_Nepal.jpg",
     photographer: "Krish Dulal",
     photographerUrl: "https://commons.wikimedia.org/wiki/User:Krish_Dulal",
     source: "wikimedia",
@@ -137,7 +137,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   // Sagarmatha National Park
   {
     id: "sagarmatha-hero",
-    url: "https://unsplash.com/photos/eyn0LjpNWV4/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1676471049029-f93852da351d?q=80&w=1200&auto=format&fit=crop",
     photographer: "Weichao Deng",
     photographerUrl: "https://unsplash.com/@juniperphoton",
     source: "unsplash",
@@ -148,7 +148,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "everest-sunset",
-    url: "https://unsplash.com/photos/infssQ2tjeM/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1637846959991-18e54d6e2035?q=80&w=1200&auto=format&fit=crop",
     photographer: "Eugene Ga",
     photographerUrl: "https://unsplash.com/@eugene_ga",
     source: "unsplash",
@@ -159,7 +159,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "tengboche-monastery",
-    url: "https://unsplash.com/photos/wRvqoP2QWVg/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1485872325464-50f17b82075a?q=80&w=1200&auto=format&fit=crop",
     photographer: "Martin Jernberg",
     photographerUrl: "https://unsplash.com/@martinjernberg",
     source: "unsplash",
@@ -172,7 +172,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   // Chitwan National Park
   {
     id: "chitwan-hero",
-    url: "https://unsplash.com/photos/XWQK-9p53ts/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1647679147029-508c62f35c33?q=80&w=1200&auto=format&fit=crop",
     photographer: "Shreyashka Maharjan",
     photographerUrl: "https://unsplash.com/@shreyashka",
     source: "unsplash",
@@ -183,7 +183,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "chitwan-rhino",
-    url: "https://unsplash.com/photos/jApVcSuBo6E/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1713429237605-8e09fed4db90?q=80&w=1200&auto=format&fit=crop",
     photographer: "Denise Elbs",
     photographerUrl: "https://unsplash.com/@deniseelbs",
     source: "unsplash",
@@ -194,7 +194,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "chitwan-canoe",
-    url: "https://unsplash.com/photos/X4s13xUyg1k/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1713429236994-d369e1aaae9d?q=80&w=1200&auto=format&fit=crop",
     photographer: "Denise Elbs",
     photographerUrl: "https://unsplash.com/@deniseelbs",
     source: "unsplash",
@@ -207,7 +207,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   // Lumbini
   {
     id: "lumbini-hero",
-    url: "https://unsplash.com/photos/aNU8MnzWhKo/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1616166831462-48a3e9089c20?q=80&w=1200&auto=format&fit=crop",
     photographer: "ashok acharya",
     photographerUrl: "https://unsplash.com/@ashokjkshetri",
     source: "unsplash",
@@ -218,7 +218,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "mayadevi-temple",
-    url: "https://unsplash.com/photos/EY7jJ40zWug/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1611892370612-0ac8e4a4507a?q=80&w=1200&auto=format&fit=crop",
     photographer: "ashok acharya",
     photographerUrl: "https://unsplash.com/@ashokjkshetri",
     source: "unsplash",
@@ -229,7 +229,7 @@ export const IMAGE_CREDITS: ImageCredit[] = [
   },
   {
     id: "ashoka-pillar",
-    url: "https://unsplash.com/photos/7uSwdSWjSVU/download?force=true&w=1600",
+    url: "https://images.unsplash.com/photo-1617587684591-082bc7f60f54?q=80&w=1200&auto=format&fit=crop",
     photographer: "ashok acharya",
     photographerUrl: "https://unsplash.com/@ashokjkshetri",
     source: "unsplash",

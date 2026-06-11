@@ -6,7 +6,7 @@ import { HeritageSite } from "@/types/heritage";
 // Custom marker icon SVG
 const createCustomMarkerIcon = (site: HeritageSite) => {
   const isNatural = site.type === "Natural";
-  const color = isNatural ? "#059669" : "#b45309"; // emerald for natural, terracotta for cultural
+  const color = isNatural ? "#0d9472" : "#c98a3e"; // emerald for natural, himalayan gold for cultural
   const iconSymbol = isNatural ? "🏔️" : "🏛️";
   
   const svgIcon = `
@@ -38,31 +38,31 @@ const createCustomMarkerIcon = (site: HeritageSite) => {
   });
 };
 
-// Enhanced popup content
+// Enhanced popup content (uses theme CSS variables so it works in dark & light)
 const createPopupContent = (site: HeritageSite) => {
   return `
-    <div class="custom-popup" style="min-width: 250px;">
-      <div style="position: relative; height: 120px; overflow: hidden; border-radius: 8px; margin-bottom: 8px;">
-        <img src="${site.heroImage}" 
-             alt="${site.name}" 
+    <div class="custom-popup" style="width: 260px;">
+      <div style="position: relative; height: 130px; overflow: hidden;">
+        <img src="${site.heroImage}"
+             alt="${site.name}"
              style="width: 100%; height: 100%; object-fit: cover;"
              loading="lazy" />
-        <div style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px;">
+        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); color: #fff; padding: 3px 9px; border-radius: 999px; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;">
           ${site.type}
         </div>
       </div>
-      <div style="padding: 0 4px;">
-        <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600; color: #0f0f0f;">
+      <div style="padding: 12px 14px 14px;">
+        <h3 style="margin: 0 0 4px 0; font-size: 16px; font-weight: 600; font-family: var(--font-serif); color: var(--foreground);">
           ${site.name}
         </h3>
-        <p style="margin: 0 0 8px 0; font-size: 12px; color: #666; line-height: 1.4;">
+        <p style="margin: 0 0 10px 0; font-size: 12px; color: var(--foreground); opacity: 0.65; line-height: 1.5;">
           ${site.description.substring(0, 100)}${site.description.length > 100 ? '...' : ''}
         </p>
-        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #888;">
-          <span>${site.region}</span>
-          <a href="/sites/${site.slug}" 
-             style="background: #b45309; color: white; padding: 4px 8px; border-radius: 4px; text-decoration: none; font-size: 10px;">
-            Learn More
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--foreground);">
+          <span style="opacity: 0.55;">${site.region}</span>
+          <a href="/sites/${site.slug}"
+             style="background: var(--accent); color: var(--background); padding: 5px 12px; border-radius: 999px; text-decoration: none; font-size: 10px; font-weight: 600;">
+            Learn more →
           </a>
         </div>
       </div>

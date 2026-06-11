@@ -45,14 +45,14 @@ export default function CreditsPage() {
   const photographers = getAllPhotographers();
 
   return (
-    <motion.div 
-      className="grid gap-8"
+    <motion.div
+      className="container-page pt-28 sm:pt-32 pb-16 grid gap-8"
       initial="initial"
       animate="animate"
       variants={containerVariants}
     >
       <motion.div className="text-center space-y-4" variants={fadeVariants}>
-        <h1 className="heading-serif text-3xl font-bold">Credits & Attributions</h1>
+        <h1 className="heading-serif text-4xl sm:text-5xl font-semibold">Credits & Attributions</h1>
         <p className="text-foreground/80 max-w-2xl mx-auto">
           This Nepal Heritage site is made possible by the generous contributions of photographers, developers, and the open-source community. 
           We gratefully acknowledge all creators whose work helps showcase Nepal&apos;s incredible cultural and natural heritage.
