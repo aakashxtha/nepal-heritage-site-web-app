@@ -1,64 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useReducedMotion, getMotionVariants } from "@/lib/useReducedMotion";
 
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-  },
-  out: {
-    opacity: 0,
-    y: -20,
-  },
-};
-
-const reducedPageVariants = {
-  initial: {
-    opacity: 0,
-  },
-  in: {
-    opacity: 1,
-  },
-  out: {
-    opacity: 0,
-  },
-};
-
-const pageTransition = {
-  type: "tween" as const,
-  ease: "anticipate" as const,
-  duration: 0.4,
-};
-
-const reducedPageTransition = {
-  type: "tween" as const,
-  ease: "anticipate" as const,
-  duration: 0.1,
-};
-
+/**
+ * Soft cross-fade between route changes. Pages handle their own
+ * entrance choreography, so the template stays out of the way.
+ */
 export default function Template({ children }: { children: React.ReactNode }) {
-  const prefersReducedMotion = useReducedMotion();
-  
-  const variants = getMotionVariants(pageVariants, reducedPageVariants, prefersReducedMotion);
-  const transition = getMotionVariants(pageTransition, reducedPageTransition, prefersReducedMotion);
-
   return (
     <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={variants}
-      transition={transition}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
     >
       {children}
     </motion.div>
   );
 }
-
-

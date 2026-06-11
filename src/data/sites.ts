@@ -8,7 +8,7 @@ export const SITES: HeritageSite[] = [
     type: "Cultural",
     region: "Bagmati Province",
     coordinates: { lat: 27.7172, lng: 85.3240 },
-    heroImage: "https://unsplash.com/photos/n0RIwkDfJ1g/download?force=true&w=1600",
+    heroImage: "https://images.unsplash.com/photo-1623492701902-47dc207df5dc?q=80&w=1600&auto=format&fit=crop",
     description:
       "A living cultural museum with seven monument zones reflecting centuries of Newar art, architecture, and religious traditions.",
     historicalOverview:
@@ -66,36 +66,36 @@ export const SITES: HeritageSite[] = [
       { question: "Dress code?", answer: "Modest attire is appreciated at religious sites; remove shoes at temples and courtyards." }
     ],
     gallery: [
-      { src: "https://unsplash.com/photos/-DNpsIGSVKQ/download?force=true&w=1600", alt: "Kathmandu Durbar Square at night", caption: "Durbar Square" },
-      { src: "https://unsplash.com/photos/Dk8jPwMPtAk/download?force=true&w=1600", alt: "Swayambhunath Stupa", caption: "Swayambhunath" },
-      { src: "https://unsplash.com/photos/N6MiaknsNX8/download?force=true&w=1600", alt: "Boudhanath Stupa", caption: "Boudhanath" },
+      { src: "https://images.unsplash.com/photo-1731490912730-6ec3b0a22533?q=80&w=1600&auto=format&fit=crop", alt: "Kathmandu Durbar Square at night", caption: "Durbar Square" },
+      { src: "https://images.unsplash.com/photo-1672338127087-d46c9ecd48f9?q=80&w=1600&auto=format&fit=crop", alt: "Swayambhunath Stupa", caption: "Swayambhunath" },
+      { src: "https://images.unsplash.com/photo-1617469170169-55626c028519?q=80&w=1600&auto=format&fit=crop", alt: "Boudhanath Stupa", caption: "Boudhanath" },
     ],
     monumentZones: [
       {
         id: "ktm-durbar",
         name: "Kathmandu Durbar Square",
         description: "Historic royal complex with courtyards, temples, and the Kumari House.",
-        images: [{ src: "https://unsplash.com/photos/FTxTyNog7BY/download?force=true&w=1600", alt: "Kathmandu Durbar Square" }],
+        images: [{ src: "https://images.unsplash.com/photo-1706188370039-e0cf9bd6ea16?q=80&w=1600&auto=format&fit=crop", alt: "Kathmandu Durbar Square" }],
         coordinates: { lat: 27.7045, lng: 85.3076 },
       },
       {
         id: "patan-durbar",
         name: "Patan Durbar Square",
         description: "Renowned for exquisite Newar craftsmanship and the Krishna Mandir.",
-        images: [{ src: "https://unsplash.com/photos/nHiAQu38jKg/download?force=true&w=1600", alt: "Patan Durbar Square" }],
+        images: [{ src: "https://images.unsplash.com/photo-1699204121879-f7d805d3bc41?q=80&w=1600&auto=format&fit=crop", alt: "Patan Durbar Square" }],
         coordinates: { lat: 27.6727, lng: 85.3255 },
       },
       {
         id: "bhaktapur-durbar",
         name: "Bhaktapur Durbar Square",
         description: "Well-preserved medieval cityscape with temples and pottery square.",
-        images: [{ src: "https://unsplash.com/photos/ErntP2j0WKk/download?force=true&w=1600", alt: "Bhaktapur Durbar Square" }],
+        images: [{ src: "https://images.unsplash.com/photo-1634150527341-56267a30704d?q=80&w=1600&auto=format&fit=crop", alt: "Bhaktapur Durbar Square" }],
         coordinates: { lat: 27.6723, lng: 85.4280 },
       },
-      { id: "swayambhu", name: "Swayambhunath", description: "Ancient stupa atop a hill.", images: [{ src: "https://unsplash.com/photos/fdO0Rm1SUDE/download?force=true&w=1600", alt: "Swayambhunath" }], coordinates: { lat: 27.7149, lng: 85.2901 } },
-      { id: "boudha", name: "Boudhanath", description: "Vast mandala stupa and Tibetan quarter.", images: [{ src: "https://unsplash.com/photos/KKm1ua7MSf0/download?force=true&w=1600", alt: "Boudhanath" }], coordinates: { lat: 27.7215, lng: 85.3616 } },
-      { id: "pashupati", name: "Pashupatinath", description: "Sacred Hindu temple complex on the Bagmati.", images: [{ src: "https://unsplash.com/photos/R2sI4cwPXqQ/download?force=true&w=1600", alt: "Pashupatinath" }], coordinates: { lat: 27.7104, lng: 85.3486 } },
-      { id: "changu", name: "Changu Narayan", description: "One of the oldest temples in the valley.", images: [{ src: "https://commons.wikimedia.org/wiki/Special:FilePath/Changunarayan%20Temple%20of%20Nepal.jpg", alt: "Changu Narayan" }], coordinates: { lat: 27.7148, lng: 85.4271 } },
+      { id: "swayambhu", name: "Swayambhunath", description: "Ancient stupa atop a hill.", images: [{ src: "https://images.unsplash.com/photo-1560747643-308411529b15?q=80&w=1600&auto=format&fit=crop", alt: "Swayambhunath" }], coordinates: { lat: 27.7149, lng: 85.2901 } },
+      { id: "boudha", name: "Boudhanath", description: "Vast mandala stupa and Tibetan quarter.", images: [{ src: "https://images.unsplash.com/photo-1611516491426-03025e6043c8?q=80&w=1600&auto=format&fit=crop", alt: "Boudhanath" }], coordinates: { lat: 27.7215, lng: 85.3616 } },
+      { id: "pashupati", name: "Pashupatinath", description: "Sacred Hindu temple complex on the Bagmati.", images: [{ src: "https://images.unsplash.com/photo-1648298470994-7065f521375c?q=80&w=1600&auto=format&fit=crop", alt: "Pashupatinath" }], coordinates: { lat: 27.7104, lng: 85.3486 } },
+      { id: "changu", name: "Changu Narayan", description: "One of the oldest temples in the valley.", images: [{ src: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Changunarayan_Temple_of_Nepal.jpg", alt: "Changu Narayan" }], coordinates: { lat: 27.7148, lng: 85.4271 } },
     ],
   },
   {
@@ -105,7 +105,7 @@ export const SITES: HeritageSite[] = [
     type: "Natural",
     region: "Province No. 1",
     coordinates: { lat: 27.9320, lng: 86.7250 },
-    heroImage: "https://unsplash.com/photos/eyn0LjpNWV4/download?force=true&w=1600",
+    heroImage: "https://images.unsplash.com/photo-1676471049029-f93852da351d?q=80&w=1600&auto=format&fit=crop",
     description:
       "Home to Mount Everest and Sherpa culture, a dramatic high-altitude landscape of peaks, glaciers, and valleys.",
     historicalOverview:
@@ -157,8 +157,8 @@ export const SITES: HeritageSite[] = [
       { question: "Permits?", answer: "Sagarmatha National Park entry and Khumbu Pasang Lhamu local permits are required." }
     ],
     gallery: [
-      { src: "https://unsplash.com/photos/infssQ2tjeM/download?force=true&w=1600", alt: "Mount Everest at sunset" },
-      { src: "https://unsplash.com/photos/wRvqoP2QWVg/download?force=true&w=1600", alt: "Tengboche Monastery", caption: "Tengboche Monastery" },
+      { src: "https://images.unsplash.com/photo-1637846959991-18e54d6e2035?q=80&w=1600&auto=format&fit=crop", alt: "Mount Everest at sunset" },
+      { src: "https://images.unsplash.com/photo-1485872325464-50f17b82075a?q=80&w=1600&auto=format&fit=crop", alt: "Tengboche Monastery", caption: "Tengboche Monastery" },
     ],
   },
   {
@@ -168,7 +168,7 @@ export const SITES: HeritageSite[] = [
     type: "Natural",
     region: "Bagmati Province",
     coordinates: { lat: 27.5345, lng: 84.4610 },
-    heroImage: "https://unsplash.com/photos/XWQK-9p53ts/download?force=true&w=1600",
+    heroImage: "https://images.unsplash.com/photo-1647679147029-508c62f35c33?q=80&w=1600&auto=format&fit=crop",
     description:
       "Lowland Terai jungle famed for one-horned rhinoceros, Bengal tigers, gharials, and vibrant birdlife.",
     historicalOverview:
@@ -220,8 +220,8 @@ export const SITES: HeritageSite[] = [
       { question: "Malaria risk?", answer: "Risk is low but bring insect repellent; consult a travel clinic if concerned." }
     ],
     gallery: [
-      { src: "https://unsplash.com/photos/jApVcSuBo6E/download?force=true&w=1600", alt: "One-horned rhinoceros" },
-      { src: "https://unsplash.com/photos/X4s13xUyg1k/download?force=true&w=1600", alt: "Canoe safari" },
+      { src: "https://images.unsplash.com/photo-1713429237605-8e09fed4db90?q=80&w=1600&auto=format&fit=crop", alt: "One-horned rhinoceros" },
+      { src: "https://images.unsplash.com/photo-1713429236994-d369e1aaae9d?q=80&w=1600&auto=format&fit=crop", alt: "Canoe safari" },
     ],
   },
   {
@@ -231,7 +231,7 @@ export const SITES: HeritageSite[] = [
     type: "Cultural",
     region: "Lumbini Province",
     coordinates: { lat: 27.4833, lng: 83.2833 },
-    heroImage: "https://unsplash.com/photos/aNU8MnzWhKo/download?force=true&w=1600",
+    heroImage: "https://images.unsplash.com/photo-1616166831462-48a3e9089c20?q=80&w=1600&auto=format&fit=crop",
     description:
       "Birthplace of Siddhartha Gautama (Buddha), a sacred pilgrimage center with monastic zones and archaeological remains.",
     historicalOverview:
@@ -256,8 +256,8 @@ export const SITES: HeritageSite[] = [
       { year: "1997", title: "UNESCO Inscription", description: "World Heritage listing" },
     ],
     gallery: [
-      { src: "https://unsplash.com/photos/EY7jJ40zWug/download?force=true&w=1600", alt: "Mayadevi Temple" },
-      { src: "https://unsplash.com/photos/7uSwdSWjSVU/download?force=true&w=1600", alt: "Ashoka Pillar" },
+      { src: "https://images.unsplash.com/photo-1611892370612-0ac8e4a4507a?q=80&w=1600&auto=format&fit=crop", alt: "Mayadevi Temple" },
+      { src: "https://images.unsplash.com/photo-1617587684591-082bc7f60f54?q=80&w=1600&auto=format&fit=crop", alt: "Ashoka Pillar" },
     ],
     unesco: {
       inscriptionYear: 1997,

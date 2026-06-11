@@ -1,96 +1,53 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import type { TimelineEvent } from "@/types/heritage";
-
-const containerVariants = {
-  animate: {
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  initial: { 
-    opacity: 0, 
-    x: -20,
-    scale: 0.8
-  },
-  animate: { 
-    opacity: 1, 
-    x: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut" as const
-    }
-  }
-};
-
-const dotVariants = {
-  initial: { 
-    scale: 0,
-    backgroundColor: "rgba(156, 163, 175, 0.3)"
-  },
-  animate: { 
-    scale: 1,
-    backgroundColor: "hsl(var(--accent))",
-    transition: {
-      duration: 0.3,
-      delay: 0.2,
-      ease: "easeOut" as const
-    }
-  }
-};
+import { EASE_OUT } from "@/components/motion/Reveal";
 
 export function Timeline({ events }: { events: TimelineEvent[] }) {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.85", "end 0.5"],
+  });
+  const lineScale = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
+
   return (
-    <motion.ol 
-      className="relative border-s border-foreground/15 pl-6 space-y-6"
-      variants={containerVariants}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-    >
+    <ol ref={ref} className="relative pl-8 sm:pl-10 space-y-10">
+      {/* Track + animated progress line */}
+      <span className="absolute left-[5px] top-1 bottom-1 w-px bg-foreground/10" aria-hidden />
+      <motion.span
+        className="absolute left-[5px] top-1 bottom-1 w-px bg-accent origin-top"
+        style={{ scaleY: reduce ? 1 : lineScale }}
+        aria-hidden
+      />
+
       {events.map((e, i) => (
-        <motion.li 
-          key={i} 
+        <motion.li
+          key={i}
           className="relative"
-          variants={itemVariants}
+          initial={{ opacity: 0, x: reduce ? 0 : -18 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: reduce ? 0.2 : 0.7, delay: i * 0.05, ease: EASE_OUT }}
         >
-          <motion.span 
-            className="absolute -start-[9px] top-1.5 h-3 w-3 rounded-full shadow" 
-            variants={dotVariants}
-          />
-          <motion.div 
-            className="text-sm uppercase tracking-wide text-foreground/70"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 + i * 0.1 }}
+          <motion.span
+            className="absolute -left-8 sm:-left-10 top-1 grid place-items-center"
+            initial={{ scale: reduce ? 1 : 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, delay: 0.15 + i * 0.05, type: "spring", bounce: 0.4 }}
+            aria-hidden
           >
-            {e.year}
-          </motion.div>
-          <motion.div 
-            className="font-medium"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 + i * 0.1 }}
-          >
-            {e.title}
-          </motion.div>
-          <motion.p 
-            className="text-sm text-foreground/80"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 + i * 0.1 }}
-          >
-            {e.description}
-          </motion.p>
+            <span className="h-[11px] w-[11px] rounded-full bg-accent ring-4 ring-accent/15" />
+          </motion.span>
+          <div className="heading-serif text-2xl text-accent leading-none">{e.year}</div>
+          <div className="mt-1.5 font-semibold">{e.title}</div>
+          <p className="mt-1 text-sm text-foreground/65 max-w-xl">{e.description}</p>
         </motion.li>
       ))}
-    </motion.ol>
+    </ol>
   );
 }
-
-
