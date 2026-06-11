@@ -1,50 +1,37 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Thermometer, Cloud, Sun, Snowflake, Calendar, MapPin } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { CalendarDays, Cloud, Flower2, Leaf, Snowflake, Sparkles, Thermometer } from "lucide-react";
 import { getSeasonalInfo, getSeason, type SeasonalInfo } from "@/data/cultural-calendar";
-import { useReducedMotion, getMotionVariants } from "@/lib/useReducedMotion";
+import { EASE_OUT } from "@/components/motion/Reveal";
+import { cn } from "@/lib/utils";
 
-const SEASON_ICONS = {
-  spring: <Sun className="h-5 w-5" />,
-  summer: <Cloud className="h-5 w-5" />,
-  autumn: <Thermometer className="h-5 w-5" />,
-  winter: <Snowflake className="h-5 w-5" />
-};
+type SeasonKey = keyof SeasonalInfo["seasons"];
 
-const SEASON_COLORS = {
-  spring: "from-green-500/20 to-yellow-500/20 border-green-500/30",
-  summer: "from-blue-500/20 to-green-500/20 border-blue-500/30",
-  autumn: "from-orange-500/20 to-red-500/20 border-orange-500/30",
-  winter: "from-blue-500/20 to-purple-500/20 border-blue-500/30"
-};
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
-
-const reducedFadeInUp = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.2 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const reducedStaggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.05
-    }
-  }
+const SEASON_META: Record<
+  SeasonKey,
+  { icon: React.ComponentType<{ className?: string }>; badge: string; ring: string }
+> = {
+  spring: {
+    icon: Flower2,
+    badge: "border-emerald-400/30 bg-emerald-400/10 text-emerald-500 dark:text-emerald-300",
+    ring: "hover:border-emerald-400/40",
+  },
+  summer: {
+    icon: Cloud,
+    badge: "border-sky-400/30 bg-sky-400/10 text-sky-500 dark:text-sky-300",
+    ring: "hover:border-sky-400/40",
+  },
+  autumn: {
+    icon: Leaf,
+    badge: "border-accent/30 bg-accent/10 text-accent",
+    ring: "hover:border-accent/40",
+  },
+  winter: {
+    icon: Snowflake,
+    badge: "border-violet-400/30 bg-violet-400/10 text-violet-500 dark:text-violet-300",
+    ring: "hover:border-violet-400/40",
+  },
 };
 
 interface SeasonalGuideProps {
@@ -55,102 +42,111 @@ interface SeasonalGuideProps {
 export function SeasonalGuide({ siteId, siteName }: SeasonalGuideProps) {
   const seasonalInfo = getSeasonalInfo(siteId);
   const currentSeason = getSeason(new Date().getMonth() + 1);
-  const prefersReducedMotion = useReducedMotion();
-  
-  const fadeVariants = getMotionVariants(fadeInUp, reducedFadeInUp, prefersReducedMotion);
-  const containerVariants = getMotionVariants(staggerContainer, reducedStaggerContainer, prefersReducedMotion);
+  const reduce = useReducedMotion();
 
   if (!seasonalInfo) {
     return (
-      <div className="text-center py-8">
-        <p className="text-foreground/60">Seasonal information not available for this site.</p>
+      <div className="rounded-2xl border border-dashed border-border-soft py-12 text-center">
+        <p className="text-foreground/55">Seasonal information not available for this site.</p>
       </div>
     );
   }
 
-  const seasons = Object.entries(seasonalInfo.seasons) as [keyof SeasonalInfo['seasons'], SeasonalInfo['seasons'][keyof SeasonalInfo['seasons']]][];
+  const seasons = Object.entries(seasonalInfo.seasons) as [
+    SeasonKey,
+    SeasonalInfo["seasons"][SeasonKey],
+  ][];
 
   return (
-    <motion.div 
-      className="space-y-6"
-      initial="initial"
-      animate="animate"
-      variants={containerVariants}
-    >
-      <motion.div className="text-center space-y-2" variants={fadeVariants}>
-        <h2 className="text-2xl font-bold heading-serif">Seasonal Guide</h2>
-        <p className="text-foreground/70">
-          Best times to visit {siteName} throughout the year
+    <div className="space-y-7">
+      <div>
+        <h2 className="heading-serif text-3xl font-semibold flex items-baseline gap-4">
+          <span className="h-px w-8 bg-accent shrink-0 self-center" aria-hidden />
+          A year at {siteName.split(" ")[0]}
+        </h2>
+        <p className="mt-3 text-foreground/65 max-w-2xl">
+          Four seasons, four very different experiences — what to expect whenever you arrive.
         </p>
-      </motion.div>
+      </div>
 
-      <motion.div 
-        className="grid gap-6 md:grid-cols-2"
-        variants={containerVariants}
-      >
+      <div className="grid gap-5 md:grid-cols-2">
         {seasons.map(([seasonKey, season], index) => {
-          const isCurrentSeason = seasonKey === currentSeason;
-          
+          const meta = SEASON_META[seasonKey];
+          const isCurrent = seasonKey === currentSeason;
           return (
-            <motion.div
+            <motion.article
               key={seasonKey}
-              className={`relative p-6 rounded-xl border bg-gradient-to-br ${SEASON_COLORS[seasonKey]} ${
-                isCurrentSeason ? 'ring-2 ring-accent' : ''
-              }`}
-              variants={fadeVariants}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: prefersReducedMotion ? 1 : 1.02 }}
-            >
-              {isCurrentSeason && (
-                <div className="absolute -top-2 -right-2 bg-accent text-background px-2 py-1 rounded-full text-xs font-medium">
-                  Current Season
-                </div>
+              className={cn(
+                "relative rounded-2xl border bg-surface/60 p-7 transition-colors duration-300",
+                isCurrent ? "border-accent/45" : "border-border-soft",
+                meta.ring
               )}
-              
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-background/20">
-                  {SEASON_ICONS[seasonKey]}
-                </div>
+              initial={{ opacity: 0, y: reduce ? 0 : 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: (index % 2) * 0.1, ease: EASE_OUT }}
+            >
+              {isCurrent && (
+                <span className="absolute top-5 right-5 rounded-full bg-accent px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-background">
+                  Now
+                </span>
+              )}
+
+              <div className="flex items-center gap-3.5">
+                <span
+                  className={cn(
+                    "grid h-11 w-11 place-items-center rounded-full border",
+                    meta.badge
+                  )}
+                >
+                  <meta.icon className="h-5 w-5" />
+                </span>
                 <div>
-                  <h3 className="text-lg font-semibold capitalize">{seasonKey}</h3>
-                  <p className="text-sm text-foreground/70">{season.months}</p>
+                  <h3 className="heading-serif text-2xl font-semibold capitalize">{seasonKey}</h3>
+                  <p className="text-xs uppercase tracking-[0.18em] text-foreground/45">
+                    {season.months}
+                  </p>
                 </div>
               </div>
-              
-              <div className="space-y-4">
+
+              <div className="mt-6 space-y-5 text-sm">
                 <div>
-                  <h4 className="font-medium mb-2 flex items-center gap-2">
-                    <Thermometer className="h-4 w-4" />
+                  <h4 className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-foreground/45">
+                    <Thermometer className="h-3.5 w-3.5 text-accent" />
                     Weather
                   </h4>
-                  <p className="text-sm text-foreground/80">{season.weather}</p>
+                  <p className="mt-2 text-foreground/75 leading-relaxed">{season.weather}</p>
                 </div>
-                
+
                 <div>
-                  <h4 className="font-medium mb-2 flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
+                  <h4 className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-foreground/45">
+                    <Sparkles className="h-3.5 w-3.5 text-accent" />
                     Highlights
                   </h4>
-                  <ul className="space-y-1">
+                  <ul className="mt-2 space-y-1.5 text-foreground/75">
                     {season.highlights.map((highlight, idx) => (
-                      <li key={idx} className="text-sm text-foreground/80 flex items-start gap-2">
-                        <span className="text-accent mt-1">•</span>
+                      <li key={idx} className="flex gap-2.5">
+                        <span className="text-accent" aria-hidden>
+                          —
+                        </span>
                         {highlight}
                       </li>
                     ))}
                   </ul>
                 </div>
-                
+
                 {season.festivals.length > 0 && (
                   <div>
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      Festivals & Events
+                    <h4 className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-foreground/45">
+                      <CalendarDays className="h-3.5 w-3.5 text-accent" />
+                      Festivals & events
                     </h4>
-                    <ul className="space-y-1">
+                    <ul className="mt-2 space-y-1.5 text-foreground/75">
                       {season.festivals.map((festival, idx) => (
-                        <li key={idx} className="text-sm text-foreground/80 flex items-start gap-2">
-                          <span className="text-accent mt-1">•</span>
+                        <li key={idx} className="flex gap-2.5">
+                          <span className="text-accent" aria-hidden>
+                            —
+                          </span>
                           {festival}
                         </li>
                       ))}
@@ -158,31 +154,41 @@ export function SeasonalGuide({ siteId, siteName }: SeasonalGuideProps) {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </motion.article>
           );
         })}
-      </motion.div>
+      </div>
 
-      <motion.div 
-        className="p-6 rounded-xl bg-accent/10 border border-accent/20"
-        variants={fadeVariants}
+      <motion.div
+        className="relative overflow-hidden rounded-2xl border border-accent/25 bg-accent/10 p-7 sm:p-8"
+        initial={{ opacity: 0, y: reduce ? 0 : 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: EASE_OUT }}
       >
-        <h3 className="font-semibold mb-3 text-accent">Planning Your Visit</h3>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <h4 className="font-medium mb-2">Best Overall Time</h4>
-            <p className="text-sm text-foreground/80">
-              October to December and March to May offer the best weather conditions for most activities.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-medium mb-2">Festival Season</h4>
-            <p className="text-sm text-foreground/80">
-              September to November is peak festival season with Dashain, Tihar, and other major celebrations.
-            </p>
+        <div className="aurora opacity-60" aria-hidden />
+        <div className="relative">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-accent">
+            Planning your visit
+          </p>
+          <div className="mt-4 grid gap-6 md:grid-cols-2">
+            <div>
+              <h4 className="font-semibold">Best overall time</h4>
+              <p className="mt-1.5 text-sm text-foreground/70 leading-relaxed">
+                October to December and March to May offer the best weather conditions for most
+                activities.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold">Festival season</h4>
+              <p className="mt-1.5 text-sm text-foreground/70 leading-relaxed">
+                September to November is peak festival season with Dashain, Tihar, and other major
+                celebrations.
+              </p>
+            </div>
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }

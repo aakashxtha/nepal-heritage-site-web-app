@@ -21,6 +21,9 @@
   --border: rgba(28, 23, 21, 0.12);
 }
 
+/* Bind Tailwind's `dark:` variant to our data-theme toggle (dark is the default) */
+@custom-variant dark (&:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *));
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

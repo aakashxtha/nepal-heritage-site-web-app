@@ -7,7 +7,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { ArrowRight, ArrowUpRight, CalendarDays, ChevronDown, Landmark, MapPinned, Trees } from "lucide-react";
 import { SITES } from "@/data/sites";
 import { CULTURAL_EVENTS } from "@/data/cultural-calendar";
-import MapPreview from "@/components/Map/MapPreview";
+import NepalMap from "@/components/Map/NepalMap";
 import { Reveal, CountUp, SplitWords, EASE_OUT } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 
@@ -309,9 +309,7 @@ function MapBand() {
         </div>
 
         <Reveal delay={0.1} className="mt-10">
-          <div className="h-[420px] sm:h-[480px] rounded-2xl overflow-hidden border border-border-soft shadow-[0_24px_80px_rgba(0,0,0,0.25)]">
-            <MapPreview center={{ lat: 27.9, lng: 84.6 }} zoom={7} markers={SITES} className="h-full w-full" />
-          </div>
+          <NepalMap markers={SITES} className="shadow-[0_24px_80px_rgba(0,0,0,0.25)]" />
         </Reveal>
       </div>
     </section>
